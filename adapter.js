@@ -23,4 +23,41 @@ sock.write(
 loginPacketResponse
 );
 break;
+  case PacketType.HeartbeatPacket:
+    console.log('heartbeat packet received');
+    sock.Write(
+      heartbeatPacketResponse
+      );
+    break;
+  case PacketType.GPSPositioningData:
+    console.log('gps location received');
+    break;
+  default:
+    console.log('default');
+    break;
+}
+});
+  
+  sock.on("close", function(data) {
+    let index = sockets.findIndex(function(0) {
+      return (
+        o.remoteAdress === sock.remoteAddress && 
+        o.remotePort === sock.remotePort
+        );
+    });
+    if (index ! == -1);
+    console.log("CLOSED: " + sock.remoteAdress + " " + sock.remotePort);
+  });
+});
+function isLoginPacket(incomingPacket) {
+  return Buffer.compare(loginpacket, incomingpPacket) ? false : true;
+}
+        
+    
+      
+    
+    
+ 
+    
+    
 
